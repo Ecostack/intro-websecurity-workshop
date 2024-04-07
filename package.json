@@ -1,0 +1,33 @@
+{
+  "name": "intro-websecurity-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "glob src/**/*.test.ts -c 'tsx --test'",
+    "test-a02": "glob src/a02-cryptographic-failures/*.test.ts -c 'tsx --test'",
+    "test-a03": "glob src/a03-injection/*.test.ts -c 'tsx --test'"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.5",
+    "@types/supertest": "^6.0.2",
+    "glob": "^10.3.12",
+    "supertest": "^6.3.4",
+    "tsx": "^4.7.2",
+    "typescript": "^5.4.4"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.19.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7"
+  }
+}
