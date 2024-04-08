@@ -8,7 +8,8 @@
     "test-a02": "glob src/a02-cryptographic-failures/*.test.ts -c 'tsx --test'",
     "test-a03": "glob src/a03-injection/*.test.ts -c 'tsx --test'",
     "test-a04": "glob src/a04-insecure-design/*.test.ts -c 'tsx --test'",
-    "test-a05": "glob src/a05-security-misconfiguration/*.test.ts -c 'tsx --test'"
+    "test-a05": "glob src/a05-security-misconfiguration/*.test.ts -c 'tsx --test'",
+    "test-a06": "glob src/a06-vulnerable-and-outdated-components/*.test.ts -c 'tsx --test'"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -30,6 +31,7 @@
     "bcrypt": "^5.1.1",
     "express": "^4.19.2",
     "sqlite": "^5.1.1",
-    "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "systeminformation": "^4.31.0"
   }
 }
