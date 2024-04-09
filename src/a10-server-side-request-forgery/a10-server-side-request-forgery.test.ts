@@ -1,26 +1,13 @@
 import {describe, test} from 'node:test';
 import request from "supertest";
-import {CustomLogger, getServer} from "./a09-security-logging-and-monitoring-failures";
-import assert from "node:assert";
+import {getServer} from "./a10-server-side-request-forgery";
 
-class CustomLoggerImpl implements CustomLogger {
-    logMessages:string[] = []
-    log(message: string): void {
-        this.logMessages.push(message)
-        console.log(message)
-    }
-}
+describe('a10-server-side-request-forgery', () => {
+    test('fetching data from allowed URL', async () => {
+        await request(getServer()).post('/fetch-data').send({url:"https://baidu.com"}).expect(200);
+    })
 
-describe('a09-security-logging-and-monitoring-failures', () => {
-    test('safe logging practise', async () => {
-        const logger = new CustomLoggerImpl()
-        await request(getServer(logger)).post('/login').send({username:'admin',password:'secret'}).expect(200).expect("Logged in");
-
-        assert.ok(logger.logMessages.length > 0)
-        for (const loggerElement of logger.logMessages) {
-            if (loggerElement.includes('password')) {
-                assert.fail('Password found in logs')
-            }
-        }
+    test('should not fetch data from bad URL', async () => {
+        await request(getServer()).post('/fetch-data').send({url:"https://bad-url.com"}).expect(500);
     })
 })

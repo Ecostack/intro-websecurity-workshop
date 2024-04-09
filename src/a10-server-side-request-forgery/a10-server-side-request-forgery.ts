@@ -1,21 +1,33 @@
 import express from 'express'
 import bodyParser from "body-parser";
 
-export interface CustomLogger {
-    log: (message:string) => void
-}
-
-export function getServer(logger:CustomLogger) {
+export function getServer() {
 
     const app = express()
 
     app.use(bodyParser.json())
 
-    app.post('/login', (req:express.Request, res) => {
-        // TODO practise safe logging, remove sensitive data before logging
-        // see https://cwe.mitre.org/data/definitions/532.html
-        logger.log(JSON.stringify(req.body))
-        res.send('Logged in')
+    async function customFetch(url: string) {
+        console.log('Fetching data from', url)
+        return {
+            text: async () => {
+                return 'Some data'
+            }
+        }
+    }
+
+    app.post('/fetch-data', async (req: express.Request, res) => {
+        // TODO find a way to prevent Server-Side Request Forgery (SSRF) attacks
+        // see https://cwe.mitre.org/data/definitions/918.html
+        const {url} = req.body; // User-controlled input
+        try {
+            const response = await customFetch(url); // Insecure: Directly using user input to make a server-side request
+            const data = await response.text();
+            res.send(data);
+        } catch (error) {
+            console.error(error)
+            res.status(500).send('Failed to fetch data.');
+        }
     })
 
     return app

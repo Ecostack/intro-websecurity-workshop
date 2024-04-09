@@ -12,7 +12,8 @@
     "test-a06": "glob src/a06-vulnerable-and-outdated-components/*.test.ts -c 'tsx --test'",
     "test-a07": "glob src/a07-identification-and-authentication-failures/*.test.ts -c 'tsx --test'",
     "test-a08": "glob src/a08-software-and-data-integrity-failures/*.test.ts -c 'tsx --test'",
-    "test-a09": "glob src/a09-security-logging-and-monitoring-failures/*.test.ts -c 'tsx --test'"
+    "test-a09": "glob src/a09-security-logging-and-monitoring-failures/*.test.ts -c 'tsx --test'",
+    "test-a10": "glob src/a10-server-side-request-forgery/*.test.ts -c 'tsx --test'"
   },
   "engines": {
     "node": ">=20.0.0"
