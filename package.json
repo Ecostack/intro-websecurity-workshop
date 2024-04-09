@@ -9,7 +9,9 @@
     "test-a03": "glob src/a03-injection/*.test.ts -c 'tsx --test'",
     "test-a04": "glob src/a04-insecure-design/*.test.ts -c 'tsx --test'",
     "test-a05": "glob src/a05-security-misconfiguration/*.test.ts -c 'tsx --test'",
-    "test-a06": "glob src/a06-vulnerable-and-outdated-components/*.test.ts -c 'tsx --test'"
+    "test-a06": "glob src/a06-vulnerable-and-outdated-components/*.test.ts -c 'tsx --test'",
+    "test-a07": "glob src/a07-identification-and-authentication-failures/*.test.ts -c 'tsx --test'",
+    "test-a08": "glob src/a08-software-and-data-integrity-failures/*.test.ts -c 'tsx --test'"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -19,6 +21,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/esprima": "^4.0.6",
     "@types/express": "^4.17.21",
     "@types/node": "^20.12.5",
     "@types/supertest": "^6.0.2",
@@ -29,6 +32,7 @@
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "esprima": "^4.0.1",
     "express": "^4.19.2",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
