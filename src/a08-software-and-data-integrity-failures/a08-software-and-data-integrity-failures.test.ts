@@ -1,6 +1,6 @@
 import {describe, test} from 'node:test';
 import request from "supertest";
-import {getServer} from "./server";
+import {getServer} from "./a08-software-and-data-integrity-failures";
 
 describe('a08-software-and-data-integrity-failures', () => {
     test('check root endpoint', async () => {

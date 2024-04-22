@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "glob src/**/*.test.ts -c 'tsx --test'",
+    "test-a01": "glob src/a01-broken-access-control/*.test.ts -c 'tsx --test'",
     "test-a02": "glob src/a02-cryptographic-failures/*.test.ts -c 'tsx --test'",
     "test-a03": "glob src/a03-injection/*.test.ts -c 'tsx --test'",
     "test-a04": "glob src/a04-insecure-design/*.test.ts -c 'tsx --test'",

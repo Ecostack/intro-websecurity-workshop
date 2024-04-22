@@ -1,7 +1,7 @@
 import {describe, test} from 'node:test';
 import assert from "node:assert";
-import si from "systeminformation";
 import fs from "fs";
+import {testLatency} from "./a06-vulnerable-and-outdated-components";
 
 describe('a06-vulnerable-components', () => {
     test('systeminfo', async () => {
@@ -14,7 +14,7 @@ describe('a06-vulnerable-components', () => {
                 fs.rmSync(filePath)
             }
 
-            await si.inetLatency(`\`touch ${filePath}\``)
+            await testLatency(`\`touch ${filePath}\``)
             if (fs.existsSync(filePath)) {
                 assert.fail('Should not exist')
             }

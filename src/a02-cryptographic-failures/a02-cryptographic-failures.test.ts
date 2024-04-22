@@ -1,5 +1,5 @@
 import {describe, test} from "node:test";
-import {checkPassword, checkPasswordInsecure, generateHash, generateHashInsecure} from "./crypto-graphic-failures";
+import {checkPassword, checkPasswordInsecure, generateHash, generateHashInsecure} from "./a02-cryptographic-failures";
 import assert from "node:assert";
 
 describe('a02-cryptographic-failures', () => {

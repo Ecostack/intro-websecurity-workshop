@@ -1,5 +1,5 @@
 import {describe,test} from 'node:test';
-import {getServer} from "./server";
+import {getServer} from "./a01-broken-access-control";
 import request from "supertest";
 
 describe('a01-broken-access-control', () => {

@@ -1,5 +1,5 @@
 import {describe, test} from 'node:test';
-import {getDatabase, getServer} from "./injection";
+import {getDatabase, getServer} from "./a03-injection";
 import request from "supertest";
 
 describe('a03-injection', () => {

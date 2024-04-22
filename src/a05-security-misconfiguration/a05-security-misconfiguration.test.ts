@@ -1,5 +1,5 @@
 import {describe, test} from 'node:test';
-import {getServer} from "./security-misconfiguration";
+import {getServer} from "./a05-security-misconfiguration";
 import request from "supertest";
 import assert from "node:assert";
 

@@ -1,5 +1,5 @@
 import {describe, test} from 'node:test';
-import {getServer} from "./insecure-design";
+import {getServer} from "./a04-insecure-design";
 import request from "supertest";
 import assert from "node:assert";
 
