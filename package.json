@@ -38,6 +38,7 @@
     "body-parser": "^1.20.2",
     "esprima": "^4.0.1",
     "express": "^4.19.2",
+    "express-rate-limit": "^7.2.0",
     "pug": "^3.0.2",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",

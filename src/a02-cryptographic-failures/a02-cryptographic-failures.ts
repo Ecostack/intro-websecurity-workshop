@@ -1,7 +1,10 @@
 import crypto from "crypto";
 import bcrypt from "bcrypt";
 
-const BCRYPT_ROUNDS = 10
+
+// TODO set the number of rounds to use for bcrypt
+// See https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html for guidance
+const BCRYPT_ROUNDS = -1 // TODO Invalid, please overwrite
 
 export function generateHashInsecure(password: string): string {
     const hash = crypto.createHash('md5')
@@ -16,14 +19,14 @@ export function checkPasswordInsecure(password: string, hash: string): boolean {
 
 export async function generateHash(password: string): Promise<string>{
     // TODO use a secure hash function, like bcrypt
-    // see https://www.npmjs.com/package/bcrypt
-    // return await bcrypt.hash(password, BCRYPT_ROUNDS)
+    // see https://www.npmjs.com/package/bcrypt#to-hash-a-password on how to generate the hash
+
     throw new Error('not implemented')
 }
 
 export async function checkPassword(password: string, hash: string) {
     // TODO use a secure hash function, like bcrypt
-    // see https://www.npmjs.com/package/bcrypt
-    // return await bcrypt.compare(password, hash)
+    // see https://www.npmjs.com/package/bcrypt#to-check-a-password on how to compare clear text with the hash
+
     throw new Error('not implemented')
 }
