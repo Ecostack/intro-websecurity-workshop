@@ -33,7 +33,7 @@ export function getServer() {
             res.status(404).send('Not found')
             return
         }
-        // TODO: Check if the user is allowed to access the book
+        // TODO: Check if the user is allowed to access the book, check book data ownership, return 401 if not
         // see https://cwe.mitre.org/data/definitions/639.html
 
         res.send(book)
