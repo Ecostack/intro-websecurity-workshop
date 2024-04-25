@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 
 // TODO set the number of rounds to use for bcrypt
 // See https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html for guidance
+// see https://cwe.mitre.org/data/definitions/326.html
 const BCRYPT_ROUNDS = -1 // TODO Invalid, please overwrite
 
 export function generateHashInsecure(password: string): string {

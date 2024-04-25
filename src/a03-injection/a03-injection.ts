@@ -33,6 +33,8 @@ export function getServer(db: Database) {
     app.get('/', (req, res) => {
         // TODO fix the XSS injection, have a look at the documentation of the pug package and how to escape variables
         // https://pugjs.org/api/getting-started.html
+        // see https://cwe.mitre.org/data/definitions/80.html
+
         res.render('index', {title: 'Express', name: req.query.name || 'Testuser'})
     })
 
@@ -47,6 +49,7 @@ export function getServer(db: Database) {
 
             const nameFilter = req.query.name
             // TODO fix the SQL injection, check here https://www.npmjs.com/package/sqlite#prepared-statement
+            // see https://cwe.mitre.org/data/definitions/89.html
 
             let query = `SELECT * FROM book WHERE owner LIKE "${user}"`
             if (nameFilter) {

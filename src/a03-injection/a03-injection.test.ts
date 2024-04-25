@@ -3,7 +3,7 @@ import {getDatabase, getServer} from "./a03-injection";
 import request from "supertest";
 
 describe('a03-injection', () => {
-    describe("SQL injection", () => {
+    describe("CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')", () => {
         test('no auth should fail', async () => {
             const db = await getDatabase()
             await request(getServer(db)).get('/books')
@@ -39,7 +39,7 @@ describe('a03-injection', () => {
         })
     })
 
-    describe("XSS injection", () => {
+    describe("CWE-80: Improper Neutralization of Script-Related HTML Tags in a Web Page (Basic XSS)", () => {
         test('should render template with default name', async () => {
             const db = await getDatabase()
             const response = await request(getServer(db)).get(`/`)

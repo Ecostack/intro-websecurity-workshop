@@ -6,7 +6,7 @@ import request from "supertest";
 import {getServer} from "./a07-identification-and-authentication-failures";
 
 describe('a07-identification-and-authentication-failures', () => {
-    describe('hardcoded password', () => {
+    describe('CWE-259: Use of Hard-coded Password', () => {
         test('check password hardcoded', async () => {
             const filePath = __dirname + '/a07-identification-and-authentication-failures.ts'
             const fileContent = fs.readFileSync(filePath, 'utf8')
@@ -31,7 +31,7 @@ describe('a07-identification-and-authentication-failures', () => {
             assert.ok(!passwordIsString, 'passwordDB is a string')
         })
     })
-    describe("rate limiting on login", () => {
+    describe("CWE-307: Improper Restriction of Excessive Authentication Attempts", () => {
         test('successful login', async () => {
             await request(getServer()).post('/login').send({username: 'admin', password: 'the answer is 42'})
                 .expect(200)
