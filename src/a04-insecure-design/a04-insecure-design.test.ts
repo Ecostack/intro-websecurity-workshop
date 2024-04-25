@@ -19,12 +19,5 @@ describe('a04-insecure-design', () => {
             .expect(404)
     })
 
-    test('should not find error log in response', async () => {
-        const wanted = 'Internal Server Error'
-        const response = await request(getServer()).get('/sample-error')
-            .expect(500)
-        const got = response.text
-
-        assert.equal(got, wanted)
-    })
+    // TODO ME - add test case for cinema multi booking
 })

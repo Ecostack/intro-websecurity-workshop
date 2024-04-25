@@ -7,7 +7,7 @@ describe('a10-server-side-request-forgery', () => {
         await request(getServer()).post('/fetch-data').send({url:"https://baidu.com"}).expect(200);
     })
 
-    test('should not fetch data from bad URL', async () => {
-        await request(getServer()).post('/fetch-data').send({url:"https://bad-url.com"}).expect(500);
+    test('should not fetch data from internal URL', async () => {
+        await request(getServer()).post('/fetch-data').send({url:"http://salary-account-internal-system"}).expect(500);
     })
 })

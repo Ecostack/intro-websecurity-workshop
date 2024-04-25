@@ -3,6 +3,8 @@ import sqlite3 from 'sqlite3'
 import {Database, open} from 'sqlite'
 
 
+
+
 export async function getDatabase() {
     const db = await open({
         filename: ':memory:',
@@ -19,14 +21,19 @@ export async function getDatabase() {
 export function getServer(db: Database) {
     const app = express()
 
+    app.set('views', 'src/a03-injection/views');
+    app.set('view engine', 'pug')
+
     const userAuths = {
         'SomeRandomTokenUser': 'user',
         'SomeRandomTokenAdmin': 'admin'
     }
 
 
-    app.get('/', (req: express.Request<{ id: string }>, res) => {
-        res.send('hello world')
+    app.get('/', (req, res) => {
+        // TODO fix the XSS injection, have a look at the documentation of the pug package and how to escape variables
+        // https://pugjs.org/api/getting-started.html
+        res.render('index', {title: 'Express', name: req.query.name || 'Testuser'})
     })
 
     app.get('/books', async (req: express.Request<{ id: string }>, res) => {

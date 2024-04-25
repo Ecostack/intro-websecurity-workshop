@@ -31,4 +31,13 @@ describe('a05-security-misconfiguration', () => {
             assert.fail('Cookie is not HttpOnly')
         }
     })
+
+    test('should not find error log in response', async () => {
+        const wanted = 'Internal Server Error'
+        const response = await request(getServer()).get('/sample-error')
+            .expect(500)
+        const got = response.text
+
+        assert.equal(got, wanted)
+    })
 })

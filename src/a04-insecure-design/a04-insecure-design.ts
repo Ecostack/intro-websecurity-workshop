@@ -24,16 +24,7 @@ export function getServer() {
         }
     })
 
-    app.get('/sample-error', (req, res) => {
-        // TODO Do not expose error messages to the client
-        // Check https://cwe.mitre.org/data/definitions/209.html
-        try {
-            throw new Error('Failed to connect to MySQL using mysql://user:password@localhost:3306/database')
-        } catch (e) {
-            console.error(e)
-            res.status(500).send(e.message)
-        }
-    })
+
 
     return app
 }
