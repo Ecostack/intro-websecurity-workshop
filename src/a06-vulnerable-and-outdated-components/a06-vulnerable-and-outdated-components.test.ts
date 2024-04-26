@@ -17,9 +17,9 @@ describe('a06-vulnerable-components', () => {
                 assert.fail('Should not exist')
             }
         } finally {
-            // if (fs.existsSync(filePath)) {
-            //     fs.rmSync(filePath)
-            // }
+            if (fs.existsSync(filePath)) {
+                fs.rmSync(filePath)
+            }
         }
     })
 })

@@ -42,16 +42,18 @@ export function getServer() {
         const userId = req.body.userId
         const quantity = req.body.quantity
 
+        if (purchasesByUserId.has(userId) && purchasesByUserId.get(userId) + 1 > 2) {
+            res.status(429).send('Too many requests')
+            return
+        }
+
         if (purchasesByUserId.has(userId)) {
             purchasesByUserId.set(userId, purchasesByUserId.get(userId)! + quantity)
         } else {
             purchasesByUserId.set(userId, quantity)
         }
 
-        if (purchasesByUserId.get(userId)! > 2) {
-            res.status(429).send('Too many requests')
-            return
-        }
+
 
         res.sendStatus(200)
     })

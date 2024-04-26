@@ -15,7 +15,7 @@
     "test-a08": "glob src/a08-software-and-data-integrity-failures/*.test.ts -c 'tsx --test'",
     "test-a09": "glob src/a09-security-logging-and-monitoring-failures/*.test.ts -c 'tsx --test'",
     "test-a10": "glob src/a10-server-side-request-forgery/*.test.ts -c 'tsx --test'",
-    "test-solution": "glob src/solution/**/*.test.ts -c 'tsx --test'"
+    "test-solution": "glob DO_NOT_OPEN-CONTAINS_SOLUTIONS/**/*.test.ts -c 'tsx --test'"
   },
   "engines": {
     "node": ">=20.0.0"

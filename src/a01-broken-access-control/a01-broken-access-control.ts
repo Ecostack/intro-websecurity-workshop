@@ -35,6 +35,7 @@ export function getServer() {
         }
         // TODO: Check if the user is allowed to access the book, check book data ownership, return 401 if not
         // see https://cwe.mitre.org/data/definitions/639.html
+        // Check if the userID is the same as the owner on the book data
 
         res.send(book)
     })

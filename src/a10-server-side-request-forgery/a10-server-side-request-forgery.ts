@@ -19,6 +19,8 @@ export function getServer() {
     app.post('/fetch-data', async (req: express.Request, res) => {
         // TODO find a way to prevent Server-Side Request Forgery (SSRF) attacks
         // see https://cwe.mitre.org/data/definitions/918.html
+        // maybe we can use a whitelist of allowed URLs?
+
         const {url} = req.body; // User-controlled input
         try {
             const response = await customFetch(url); // Insecure: Directly using user input to make a server-side request

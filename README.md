@@ -83,6 +83,10 @@ npm run test-a01
 
 Please check the `package.json` for all defined test cases.
 
+### Solutions
+
+In case you are not able to proceed, there are solutions available in the folder `solution-only-open-for-hints`.
+
 
 ### Additional Resources
 

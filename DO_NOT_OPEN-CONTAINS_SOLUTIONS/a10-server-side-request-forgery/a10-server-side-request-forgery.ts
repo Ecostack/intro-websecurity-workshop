@@ -21,6 +21,10 @@ export function getServer() {
         // see https://cwe.mitre.org/data/definitions/918.html
         const {url} = req.body; // User-controlled input
         try {
+            if (url !== "https://baidu.com") {
+                return res.status(500).send('Invalid URL');
+            }
+
             const response = await customFetch(url); // Insecure: Directly using user input to make a server-side request
             const data = await response.text();
             res.send(data);

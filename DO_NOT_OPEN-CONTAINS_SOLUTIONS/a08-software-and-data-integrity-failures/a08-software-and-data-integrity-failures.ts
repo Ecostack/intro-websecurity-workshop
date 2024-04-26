@@ -29,6 +29,10 @@ export function getServer() {
         // TODO Implement signature verification, use the verifySignature functions
         // CWE-494: Download of Code Without Integrity Check https://cwe.mitre.org/data/definitions/494.html
         // return 401 error in case of failure
+        if(verifySignature(data, signature) === false) {
+            res.status(401).send('Invalid signature');
+            return;
+        }
 
         res.send('Firmware updated successfully.')
     })
@@ -39,6 +43,9 @@ export function getServer() {
         // see https://cwe.mitre.org/data/definitions/829.html
         // Insecure: Dynamically loading a module based on user input
         // return 500 error in case of failure
+        if (moduleName !== "allowed.js"){
+            return res.status(500).send('Invalid module')
+        }
 
         const path = './modules/' + moduleName
         try {

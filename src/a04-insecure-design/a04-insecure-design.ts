@@ -31,12 +31,13 @@ export function getServer() {
     let purchasesByUserId = new Map<string, number>()
 
     app.post('/purchase/:id', (req, res) => {
+        const userId = req.body.userId
+        const quantity = req.body.quantity
+
         // TODO Prevent abuse by limiting the number of purchases a user can make
         // See more info here: https://cwe.mitre.org/data/definitions/770.html CWE-770: Allocation of Resources Without Limits or Throttling
         // Return 429 if the user has made more than 2 purchases
-
-        const userId = req.body.userId
-        const quantity = req.body.quantity
+        // Place the check here before the purchase is added to the map
 
         if (purchasesByUserId.has(userId)) {
             purchasesByUserId.set(userId, purchasesByUserId.get(userId)! + quantity)
@@ -57,6 +58,7 @@ export function getServer() {
     app.post('/book', (req, res) => {
         const {cinemaId, numberOfAttendees} = req.body;
         // TODO Redesign the booking system in a way to not allow mass booking without required deposits
+        // Maybe require for every booking? If so, better change the message too
         // https://cwe.mitre.org/data/definitions/307.html
         if (numberOfAttendees > 15) {
             if (!req.body.depositPaid) {

@@ -34,6 +34,8 @@ export function getServer(db: Database) {
         // TODO fix the XSS injection, have a look at the documentation of the pug package and how to escape variables
         // https://pugjs.org/api/getting-started.html
         // see https://cwe.mitre.org/data/definitions/80.html
+        // hint: check the views/index.pug file and how the variable is used
+        // hint: keep an eye out for the = and !=, is there a difference with escaping?
 
         res.render('index', {title: 'Express', name: req.query.name || 'Testuser'})
     })
@@ -51,6 +53,12 @@ export function getServer(db: Database) {
 
             // TODO fix the SQL injection, check here https://www.npmjs.com/package/sqlite#prepared-statement
             // see https://cwe.mitre.org/data/definitions/89.html
+            // Example:
+            // const stmt = await db.prepare(
+            //   'SELECT col FROM tbl WHERE 13 = ? ORDER BY col DESC'
+            //  )
+            //
+            // const result = await stmt.all({ 1: 13 })
 
             let query = `SELECT * FROM book WHERE owner LIKE "${user}"`
             if (nameFilter) {

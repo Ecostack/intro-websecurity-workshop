@@ -15,14 +15,17 @@ export function getServer(logger:CustomLogger) {
         // TODO practise safe logging, remove sensitive data before logging
         // see https://cwe.mitre.org/data/definitions/532.html
         // CWE-117: Improper Output Neutralization for Logs
-        // see CWE-117: Improper Output Neutralization for Logs
+        // only log the event, not the details
+
         logger.log(JSON.stringify(req.body))
+
         res.send('Payment received')
     })
 
     app.post('/login', (req:express.Request, res) => {
         // TODO practise safe logging, remove sensitive data before logging
         // see https://cwe.mitre.org/data/definitions/532.html
+        // same as above, only log the event, not the details
         logger.log(JSON.stringify(req.body))
 
         // TODO log the event
