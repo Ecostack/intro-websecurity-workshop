@@ -7,24 +7,28 @@ export function getServer() {
 
     app.use(express.json())
 
-    app.get('/static/:file', async (req: express.Request<{ file: string }>, res) => {
-        // TODO Prevent directory traversal attacks by checking if the file path contains '..'
-        // Check the express documentation  on how to prevent this https://expressjs.com/en/starter/static-files.html
-        // See more info here: https://cwe.mitre.org/data/definitions/73.html CWE-73: External Control of File Name or Path
+    app.use('/static',express.static(__dirname + '/data/public/'))
 
-        try {
-            console.log(__dirname + '/data/public/' + req.params.file)
-            const data = await readFile(__dirname + '/data/public/' + req.params.file)
-            res.send(data)
-        } catch (e) {
-            if (e.code === 'ENOENT') {
-                res.status(404).send('Not Found')
-                return
-            }
-            console.error(e)
-            res.status(500).send('Server Error')
-        }
-    })
+    // app.get('/static/:file', async (req: express.Request<{ file: string }>, res) => {
+    //     // TODO Prevent directory traversal attacks by checking if the file path contains '..'
+    //     // Check the express documentation  on how to prevent this https://expressjs.com/en/starter/static-files.html
+    //     // See more info here: https://cwe.mitre.org/data/definitions/73.html CWE-73: External Control of File Name or Path
+    //
+    //     try {
+    //         // console.log(__dirname + '/data/public/' + req.params.file)
+    //         // const data = await readFile(__dirname + '/data/public/' + req.params.file)
+    //
+    //
+    //         res.send(data)
+    //     } catch (e) {
+    //         if (e.code === 'ENOENT') {
+    //             res.status(404).send('Not Found')
+    //             return
+    //         }
+    //         console.error(e)
+    //         res.status(500).send('Server Error')
+    //     }
+    // })
 
     // Anti-Bot buying of products
 
@@ -44,6 +48,11 @@ export function getServer() {
             purchasesByUserId.set(userId, quantity)
         }
 
+        if (purchasesByUserId.get(userId)! > 2) {
+            res.status(429).send('Too many requests')
+            return
+        }
+
         res.sendStatus(200)
     })
 
@@ -58,11 +67,12 @@ export function getServer() {
         const {cinemaId, numberOfAttendees} = req.body;
         // TODO Redesign the booking system in a way to not allow mass booking without required deposits
         // https://cwe.mitre.org/data/definitions/307.html
-        if (numberOfAttendees > 15) {
+        // if (numberOfAttendees > 15) {
             if (!req.body.depositPaid) {
-                return res.status(400).json({message: "A deposit is required for groups larger than 15."});
+                // return res.status(400).json({message: "A deposit is required for groups larger than 15."});
+                return res.status(400).json({message: "A deposit is required."});
             }
-        }
+        // }
 
         const currentBookedSeats = bookings.reduce((previousValue, currentValue) => previousValue + currentValue.numberOfAttendees, 0)
 

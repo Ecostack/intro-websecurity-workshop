@@ -2,9 +2,6 @@ import express from 'express'
 import sqlite3 from 'sqlite3'
 import {Database, open} from 'sqlite'
 
-
-
-
 export async function getDatabase() {
     const db = await open({
         filename: ':memory:',
@@ -52,12 +49,21 @@ export function getServer(db: Database) {
             // TODO fix the SQL injection, check here https://www.npmjs.com/package/sqlite#prepared-statement
             // see https://cwe.mitre.org/data/definitions/89.html
 
-            let query = `SELECT * FROM book WHERE owner LIKE "${user}"`
+
+
+            let query = `SELECT * FROM book WHERE owner LIKE ?`
             if (nameFilter) {
-                query += ` AND name LIKE "${nameFilter}"`
+                query += ` AND name LIKE ?`
             }
 
-            const result = await db.all(query)
+            const stmt = await db.prepare(query)
+            const params = {1:user}
+
+            if (nameFilter) {
+                params[2] = nameFilter
+            }
+
+            const result = await stmt.all(params)
             res.send(result)
         } catch (e) {
             console.error(e)

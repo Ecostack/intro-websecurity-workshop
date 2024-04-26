@@ -35,6 +35,10 @@ export function getServer() {
         }
         // TODO: Check if the user is allowed to access the book, check book data ownership, return 401 if not
         // see https://cwe.mitre.org/data/definitions/639.html
+        if (book.userId != user){
+            res.status(401).send('Unauthorized')
+            return
+        }
 
         res.send(book)
     })

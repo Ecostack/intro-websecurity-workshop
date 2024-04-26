@@ -31,7 +31,7 @@ describe('a03-injection', () => {
                 .expect([{id: 2, owner: 'admin', name: 'Some book B'}]);
         })
 
-        test('should get no books', async () => {
+        test('should get no book', async () => {
             const db = await getDatabase()
             await request(getServer(db)).get(`/books?name=Some book A" OR 1=1;--`).set('x-auth-token', 'SomeRandomTokenUser')
                 .expect(200)
