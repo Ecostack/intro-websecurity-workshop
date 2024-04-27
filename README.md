@@ -85,7 +85,7 @@ Please check the `package.json` for all defined test cases.
 
 ### Solutions
 
-In case you are not able to proceed, there are solutions available in the folder `solution-only-open-for-hints`.
+In case you are not able to proceed, there are solutions available in the folder `DO_NOT_OPEN-CONTAINS_SOLUTIONS`.
 
 
 ### Additional Resources
