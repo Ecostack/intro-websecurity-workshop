@@ -4,18 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "glob src/**/*.test.ts -c 'tsx --test'",
-    "test-a01": "glob src/a01-broken-access-control/*.test.ts -c 'tsx --test'",
-    "test-a02": "glob src/a02-cryptographic-failures/*.test.ts -c 'tsx --test'",
-    "test-a03": "glob src/a03-injection/*.test.ts -c 'tsx --test'",
-    "test-a04": "glob src/a04-insecure-design/*.test.ts -c 'tsx --test'",
-    "test-a05": "glob src/a05-security-misconfiguration/*.test.ts -c 'tsx --test'",
-    "test-a06": "glob src/a06-vulnerable-and-outdated-components/*.test.ts -c 'tsx --test'",
-    "test-a07": "glob src/a07-identification-and-authentication-failures/*.test.ts -c 'tsx --test'",
-    "test-a08": "glob src/a08-software-and-data-integrity-failures/*.test.ts -c 'tsx --test'",
-    "test-a09": "glob src/a09-security-logging-and-monitoring-failures/*.test.ts -c 'tsx --test'",
-    "test-a10": "glob src/a10-server-side-request-forgery/*.test.ts -c 'tsx --test'",
-    "test-solution": "glob DO_NOT_OPEN-CONTAINS_SOLUTIONS/**/*.test.ts -c 'tsx --test'"
+    "test": "glob \"./src/**/*.test.ts\" -c \"tsx --test\"",
+    "test-a01": "glob \"./src/a01-broken-access-control/*.test.ts\" -c \"tsx --test\"",
+    "test-a01win": "glob -c \"tsx --test\" \"./src/a01-broken-access-control/*.test.ts\"",
+    "test-a02": "glob \"./src/a02-cryptographic-failures/*.test.ts\" -c \"tsx --test\"",
+    "test-a03": "glob \"./src/a03-injection/*.test.ts\" -c \"tsx --test\"",
+    "test-a04": "glob \"./src/a04-insecure-design/*.test.ts\" -c \"tsx --test\"",
+    "test-a05": "glob \"./src/a05-security-misconfiguration/*.test.ts\" -c \"tsx --test\"",
+    "test-a06": "glob \"./src/a06-vulnerable-and-outdated-components/*.test.ts\" -c \"tsx --test\"",
+    "test-a07": "glob \"./src/a07-identification-and-authentication-failures/*.test.ts\" -c \"tsx --test\"",
+    "test-a08": "glob \"./src/a08-software-and-data-integrity-failures/*.test.ts\" -c \"tsx --test\"",
+    "test-a09": "glob \"./src/a09-security-logging-and-monitoring-failures/*.test.ts\" -c \"tsx --test\"",
+    "test-a10": "glob \"./src/a10-server-side-request-forgery/*.test.ts\" -c \"tsx --test\"",
+    "test-solution": "glob \"./DO_NOT_OPEN-CONTAINS_SOLUTIONS/**/*.test.ts\" -c \"tsx --test\""
   },
   "engines": {
     "node": ">=20.0.0"
